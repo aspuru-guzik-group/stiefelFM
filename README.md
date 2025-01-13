@@ -6,12 +6,11 @@ Code for training and sampling from models that predict all-atom 3D structure fr
 
 This repository contains a C++ implementation of the Stiefel exponential and logarithm, following Zimmermann & Hüper[^1].
 
-Model checkpoints, data splits, and generated samples are located at (dataverse link), and can be accessed using `wget`:
+Model checkpoints, data splits, and generated samples are located [here](https://borealisdata.ca/dataset.xhtml?persistentId=doi%3A10.5683%2FSP3%2FZ2LFNF), and can be accessed using `wget`:
 
 ```
-wget https://borealisdata.ca/api/access/datafile/<fileID>
+wget --content-disposition https://borealisdata.ca/api/access/datafile/<fileID>
 ```
-
 
 ## Environment setup
 ```
@@ -35,7 +34,7 @@ c++ -O3 -march=native -Wall -shared -std=c++11 -fPIC $(python3 -m pybind11 --inc
 Download preprocessed data splits for QM9 and GEOM, using the same splits as KREED[^2]:
 ```
 cd data
-wget ...
+wget --content-disposition https://borealisdata.ca/api/access/datafile/868784
 tar -xf processed.tar.gz
 ```
 You can process the data again by uncommenting the `download()` and `process()` methods in `src/datamodule.py`. You will need to `pip install gdown`.
@@ -64,19 +63,19 @@ Download pretrained model checkpoints:
 
 | Checkpoint Name            | Checkpoint Tag                  | Dataverse ID |
 |----------------------------|---------------------------------|--------------|
-| (QM9) KREED-XL             | `qm9_kreedXL`                   | XXXXX        |
-| (QM9) Stiefel FM           | `qm9_stiefelFM`                 | XXXXX        |
-| (QM9) Stiefel FM-OT        | `qm9_stiefelFM_OT`              | XXXXX        |
-| (QM9) Stiefel FM-ln        | `qm9_stiefelFM_logitnormal`     | XXXXX        |
-| (QM9) Stiefel FM-ln-OT     | `qm9_stiefelFM_logitnormal_OT`  | XXXXX        |
-| (QM9) Stiefel FM-stoch     | `qm9_stiefelFM_stoch10`         | XXXXX        |
-| (GEOM) KREED-XL            | `geom_kreedXL`                  | XXXXX        |
-| (GEOM) Stiefel FM          | `geom_stiefelFM`                | XXXXX        |
-| (GEOM) Stiefel FM-OT       | `geom_stiefelFM_OT`             | XXXXX        |
+| (QM9) KREED-XL             | `qm9_kreedXL`                   | 868748       |
+| (QM9) Stiefel FM           | `qm9_stiefelFM`                 | 868749       |
+| (QM9) Stiefel FM-OT        | `qm9_stiefelFM_OT`              | 868759       |
+| (QM9) Stiefel FM-ln        | `qm9_stiefelFM_logitnormal`     | 868758       |
+| (QM9) Stiefel FM-ln-OT     | `qm9_stiefelFM_logitnormal_OT`  | 868753       |
+| (QM9) Stiefel FM-stoch     | `qm9_stiefelFM_stoch10`         | 868747       |
+| (GEOM) KREED-XL            | `geom_kreedXL`                  | 868756       |
+| (GEOM) Stiefel FM          | `geom_stiefelFM`                | 868751       |
+| (GEOM) Stiefel FM-OT       | `geom_stiefelFM_OT`             | 868755       |
 
 Place checkpoints where they are expected to be located after training:
 ```
-wget https://borealisdata.ca/api/access/datafile/<fileID>
+wget --content-disposition https://borealisdata.ca/api/access/datafile/868755
 mkdir -p scripts/train_geom/ckpt/stiefelFM_OT
 mv geom_stiefelFM_OT.ckpt scripts/train_geom/ckpt/stiefelFM_OT/last.ckpt
 ```
@@ -88,7 +87,7 @@ Continue training by modifying the appropriate sbatch script to increase `max_ep
 First download generated samples from dataverse:
 ```
 # in the root directory of the repo
-wget https://borealisdata.ca/api/access/datafile/<fileID>
+wget --content-disposition https://borealisdata.ca/api/access/datafile/868750
 tar -xf samples.tar.gz
 ```
 
@@ -107,8 +106,8 @@ Then run any notebook in `figures`, which should all be reproducible, except for
 
 Summary metrics are also available in csv format in the dataverse:
 ```
-wget ...
-wget ...
+wget --content-disposition https://borealisdata.ca/api/access/datafile/868757
+wget --content-disposition https://borealisdata.ca/api/access/datafile/868754
 ```
 
 
@@ -116,7 +115,7 @@ wget ...
 
 [^2]: https://github.com/aspuru-guzik-group/kreed
 
-Citation:
+## Citation
 ```
 @article{cheng2024stiefel,
   title={Stiefel Flow Matching for Moment-Constrained Structure Elucidation},
