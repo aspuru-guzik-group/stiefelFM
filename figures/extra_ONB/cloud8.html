@@ -1,0 +1,54 @@
+<img id="img_A"><script src="https://3Dmol.org/build/3Dmol-min.js"></script><script src="https://3Dmol.org/build/3Dmol.ui-min.js"></script><div id="3dmolviewer_1733200371549827"  style="position: relative; width: 1500px; height: 1500px;">
+        <p id="3dmolwarning_1733200371549827" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the 3dmol extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    //this is to ignore the existence of requirejs amd
+    var savedexports, savedmodule;
+    if (typeof exports !== 'undefined') savedexports = exports;
+    else exports = {}
+    if (typeof module !== 'undefined') savedmodule = module;
+    else module = {}
+
+    var tag = document.createElement('script');
+    tag.src = uri;
+    tag.async = true;
+    tag.onload = () => {
+        exports = savedexports;
+        module = savedmodule;
+        resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+});
+};
+
+if(typeof $3Dmolpromise === 'undefined') {
+$3Dmolpromise = null;
+  $3Dmolpromise = loadScriptAsync('https://cdnjs.cloudflare.com/ajax/libs/3Dmol/2.0.4/3Dmol-min.js');
+}
+
+var viewer_1733200371549827 = null;
+var warn = document.getElementById("3dmolwarning_1733200371549827");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+$3Dmolpromise.then(function() {
+viewer_1733200371549827 = $3Dmol.createViewer(document.getElementById("3dmolviewer_1733200371549827"),{backgroundColor:"white"});
+viewer_1733200371549827.zoomTo();
+	viewer_1733200371549827.addModel("18\n\nC -3.105903 0.497264 -0.074039\nC -0.925832 0.240887 -0.143495\nC -0.258091 -0.013635 -0.259339\nN -0.763972 -0.175515 0.332539\nC 1.047697 0.865928 0.112196\nC 1.557300 0.993093 -0.238933\nO -0.992324 -0.457892 0.258780\nH -1.077098 1.010105 0.558993\nC 1.246204 -1.154028 0.102481\nH -1.324279 3.692332 0.383460\nH 7.206975 4.138885 0.748818\nO 1.276225 -0.419264 -0.162578\nH -2.086654 -0.636024 -0.679807\nH 5.632757 -7.782975 0.364373\nH 2.722101 -0.930546 -0.877965\nH 4.975052 3.578072 0.416175\nH -3.972513 -2.770576 0.297893\nH -0.744539 -0.960441 -1.392297\n","xyz");
+	viewer_1733200371549827.setStyle({"model": -1},{"sphere": {"scale": 0.2}});
+	viewer_1733200371549827.addArrow({"start": {"x": 0.0, "y": 0.0, "z": 0.0}, "end": {"x": 5.0, "y": 0.0, "z": 0.0}, "radius": 0.1, "color": "red", "mid": 0.95});
+	viewer_1733200371549827.addArrow({"start": {"x": 0.0, "y": 0.0, "z": 0.0}, "end": {"x": 0.0, "y": 5.0, "z": 0.0}, "radius": 0.1, "color": "green", "mid": 0.95});
+	viewer_1733200371549827.addArrow({"start": {"x": 0.0, "y": 0.0, "z": 0.0}, "end": {"x": 0.0, "y": 0.0, "z": 5.0}, "radius": 0.1, "color": "blue", "mid": 0.95});
+	viewer_1733200371549827.rotate(30,{"x": 1, "y": -1, "z": -0.2});
+	viewer_1733200371549827.zoom(0.45);
+	viewer_1733200371549827.translate(0,-50);
+viewer_1733200371549827.render();
+var png = viewer_1733200371549827.pngURI();
+document.getElementById("img_A").src = png;
+});
+</script>

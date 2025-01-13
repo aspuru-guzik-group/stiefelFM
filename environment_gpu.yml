@@ -1,0 +1,31 @@
+name: "moment"
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+  - pyg
+dependencies:
+  - python=3.9
+  - pytorch==2.2
+  - pytorch-cuda=12.1
+  - lightning
+  - pyg
+  - geomstats
+  - pydantic<2
+  - pydantic-cli
+  - wandb
+  - rdkit
+  - py3dmol
+  - einops
+  - numpy
+  - scipy=1.11.2
+  - matplotlib
+  - pybind11
+  - eigen
+  - xtb
+  - gdown
+  - isort
+  - black
+  - jupyter
+  - notebook
+  - ipywidgets
