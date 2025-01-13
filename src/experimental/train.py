@@ -60,7 +60,7 @@ class TrainGenConfig(LitGenConfig):
 
     checkpoint: bool = False
     checkpoint_dir: Optional[str] = None
-    checkpoint_every_n_minutes: int = 10
+    checkpoint_every_n_minutes: int = 10 # unused, but kept for compatibility
 
     log_every_n_steps: int = 10
 
@@ -129,7 +129,7 @@ def train(config: TrainGenConfig):
                 monitor="epoch",
                 mode="max",
                 save_top_k=2,
-                # Every 10 minutes
+                # Every 10 minutes, commented out because it's not reproducible
                 # train_time_interval=datetime.timedelta(minutes=cfg.checkpoint_every_n_minutes),
                 every_n_epochs=1,  # for reliability
                 save_last=True,
