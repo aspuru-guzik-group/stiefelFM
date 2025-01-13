@@ -1,7 +1,5 @@
 import pathlib
-import tarfile
 
-# import gdown
 import joblib
 import lightning.pytorch as pl
 import numpy as np
@@ -12,16 +10,16 @@ import tqdm
 from src.chem import Molecule
 from src.paths import DATA_ROOT
 
-# RAW_FILE_URLS = {
-#     "qm9": (
-#         "qm9_processed.tar.gz",
-#         "https://drive.google.com/u/0/uc?id=1jmc2JBoXJxat_Aq74E3ffCIQGKH9JuG-&confirm=t",
-#     ),
-#     "geom": (
-#         "geom_processed.tar.gz",
-#         "https://drive.google.com/u/0/uc?id=1UXDaJak686jtEyyfJrTxkiOkYT1SsKyK&confirm=t",
-#     ),
-# }
+RAW_FILE_URLS = {
+    "qm9": (
+        "qm9_processed.tar.gz",
+        "https://drive.google.com/u/0/uc?id=1jmc2JBoXJxat_Aq74E3ffCIQGKH9JuG-&confirm=t",
+    ),
+    "geom": (
+        "geom_processed.tar.gz",
+        "https://drive.google.com/u/0/uc?id=1UXDaJak686jtEyyfJrTxkiOkYT1SsKyK&confirm=t",
+    ),
+}
 
 BAD_QM9_EXAMPLES = np.array([126595, 17167, 56848, 45895, 18183, 119102, 107249])
 QM9_SMALL_MOMENTS = np.load(DATA_ROOT / "splits" / "qm9_small_moments.npy")
@@ -90,6 +88,8 @@ class ConformerDataset(pyg.data.InMemoryDataset):
         return [f"{self.dataset}_{split}.pyg" for split in SPLITS]
 
     # def download(self):
+    #     import gdown
+    #     import tarfile
     #     fname, url = RAW_FILE_URLS[self.dataset]
     #     gdown.download(url, f"{self.raw_dir}/{fname}", quiet=False)
 
