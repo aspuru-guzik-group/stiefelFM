@@ -2,6 +2,8 @@
 
 https://arxiv.org/abs/2412.12540
 
+Colab: https://colab.research.google.com/drive/1kEd16obGXJtUVaeGCmCzoD-ZWfWOO9RE?usp=sharing
+
 Code for training and sampling from models that predict all-atom 3D structure from just molecular formula and moments of inertia.
 
 This repository contains a C++ implementation of the Stiefel exponential and logarithm, following Zimmermann & Hüper[^1].
@@ -11,6 +13,8 @@ Model checkpoints, data splits, and generated samples are located [here](https:/
 ```
 wget --content-disposition https://borealisdata.ca/api/access/datafile/<fileID>
 ```
+
+where `fileID` can be found in the URL after clicking on each file in the dataverse.
 
 ## Environment setup
 ```
@@ -23,7 +27,7 @@ mamba activate moment
 For reference, this environment was prepared by
 ```
 mamba create -n moment python=3.9
-mamba install "pydantic<2" pydantic-cli wandb rdkit py3dmol einops numpy scipy=1.11.2 matplotlib lightning pytorch pytorch==2.0.1 pytorch-cuda=11.7 pyg pybind11 eigen xtb -c pyg -c pytorch -c nvidia
+mamba install "pydantic<2" pydantic-cli wandb rdkit py3dmol einops numpy scipy=1.11.2 matplotlib lightning pytorch pytorch==2.0.1 pytorch-cuda=11.7 pyg pybind11 eigen xtb mkl=2024.0.0 -c pyg -c pytorch -c nvidia
 ```
 
 Compile `stiefel_log`: (you may need to `module load gcc`, alternatively you can try `mamba install c-compiler cxx-compiler`)
