@@ -1,8 +1,12 @@
 # Stiefel Flow Matching for Moment-Constrained Structure Elucidation
 
+![Stiefel Flow Matching Animation](figures/stiefelFM-anim.gif)
+
 https://arxiv.org/abs/2412.12540
 
 Colab: https://colab.research.google.com/drive/1kEd16obGXJtUVaeGCmCzoD-ZWfWOO9RE?usp=sharing
+
+---
 
 Code for training and sampling from models that predict all-atom 3D structure from just molecular formula and moments of inertia.
 
